@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:id="@+id/application_rl_root"
+    android:layout_height="@dimen/px_88">
+
+
+    <TextView
+        android:id="@+id/application_tv_title"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/px_text_34"
+        android:textColor="@color/color_Apptheme"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line_color"/>
+</RelativeLayout>

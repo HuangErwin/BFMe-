@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="line_color">#ccc</color>
+    <color name="color_Apptheme">#1C4D8F</color>
+    <color name="colorTextDealLeft">#999999</color>
+
+
+</resources>
