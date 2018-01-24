@@ -8,6 +8,11 @@
     <color name="line_color">#ccc</color>
     <color name="color_Apptheme">#1C4D8F</color>
     <color name="colorTextDealLeft">#999999</color>
+    //swiperefreshlayout 的样式
+    <color name="holo_blue_bright">#ff00ddff</color>
+    <color name="holo_green_light">#ff99cc00</color>
+    <color name="holo_orange_light">#ffffbb33</color>
+    <color name="holo_red_light">#ffff4444</color>
 
 
 </resources>

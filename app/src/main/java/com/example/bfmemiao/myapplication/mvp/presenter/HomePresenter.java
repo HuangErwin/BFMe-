@@ -40,4 +40,9 @@ public class HomePresenter implements OnLoadDataListener {
         homeView.showProcress();
         homeModel.requestCategory(this);
     }
+
+    public void requestTalk(String pageSize, String pageNo) {
+        homeView.showProcress();
+        homeModel.requestTalk(pageSize,pageNo,this);
+    }
 }

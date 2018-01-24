@@ -40,7 +40,7 @@ public class CategoryLeftRecycleViewAdapter extends BaseRecycleViewAdapter {
         if(holder instanceof CategoryContentViewHolder){
             CategoryContentViewHolder holder1 = (CategoryContentViewHolder) holder;
             holder1.mTvTitle.setText(category.get(position).getName());
-            if(position== CategoryFragment.CURRENT_POSITION){
+            if(position == CategoryFragment.CURRENT_POSITION){
                 holder1.mTvTitle.setTextColor(Color.parseColor("#1C4D8F"));
             }else {
                 holder1.mTvTitle.setTextColor(Color.parseColor("#333333"));

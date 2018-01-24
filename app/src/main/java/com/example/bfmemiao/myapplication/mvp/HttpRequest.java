@@ -94,4 +94,14 @@ public class HttpRequest extends RetrofitUtils {
         setSubscribe(observable, observer);
 
     }
+
+    /**
+     * 获取图文
+     * @param observer
+     */
+    public void requestTalk(String pageSize, String pageNo,Observer<BaseBean> observer) {
+        Observable observable = service.requestTalk(pageSize,pageNo).map(new HttpResultFunc());
+        setSubscribe(observable, observer);
+
+    }
 }

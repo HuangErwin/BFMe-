@@ -1,6 +1,7 @@
 package com.example.bfmemiao.myapplication.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,8 @@ public class CategoryFragment extends BaseFragment implements HomeView {
     private CategoryLeftRecycleViewAdapter categoryLeftRecycleViewAdapter;
     private CategoryRightRecycleViewAdapter categoryRightRecycleViewAdapter;
     private LinearLayoutManager linearLayoutManagerright;
+    private boolean isClick;
+    private Handler handler = new Handler();
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
@@ -76,7 +79,14 @@ public class CategoryFragment extends BaseFragment implements HomeView {
             public void onItemClick(View view, int postion) {
                 CURRENT_POSITION = postion;
                 categoryLeftRecycleViewAdapter.notifyDataSetChanged();
-                mRightRecycleView.smoothScrollToPosition(postion);
+                isClick = true;
+                mRightRecycleView.scrollToPosition(postion);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                      isClick = false;
+                    }
+                },500);
             }
         });
 
@@ -85,14 +95,23 @@ public class CategoryFragment extends BaseFragment implements HomeView {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                    int lastVisiblePosition = linearLayoutManagerright.findLastVisibleItemPosition();
+                if(!isClick){
                     int firstVisibleItemPosition = linearLayoutManagerright.findFirstVisibleItemPosition();
-                    int i = (lastVisiblePosition + firstVisibleItemPosition) / 2;
-                    CURRENT_POSITION = i;
+                    CURRENT_POSITION = firstVisibleItemPosition;
                     categoryLeftRecycleViewAdapter.notifyDataSetChanged();
+                }
+//
 
+            }
 
-
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(!isClick){
+                    int firstVisibleItemPosition = linearLayoutManagerright.findFirstVisibleItemPosition();
+                    CURRENT_POSITION = firstVisibleItemPosition;
+                    categoryLeftRecycleViewAdapter.notifyDataSetChanged();
+                }
 
             }
         });
@@ -111,7 +130,6 @@ public class CategoryFragment extends BaseFragment implements HomeView {
             CategoryAllBean data1 = (CategoryAllBean) data;
             List<CategoryAllBean.CategoryBean> category = data1.getCategory();
             this.category.addAll(category);
-
             categoryLeftRecycleViewAdapter.notifyDataSetChanged();
             categoryRightRecycleViewAdapter.notifyDataSetChanged();
         }
