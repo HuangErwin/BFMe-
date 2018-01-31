@@ -116,7 +116,8 @@ public class CategoryFragment extends BaseFragment implements HomeView {
             }
         });
         HomePresenter homePresenter = new HomePresenter(this);
-        homePresenter.requestCategory();
+        homePresenter.requestGet("1");
+
     }
 
     @Override

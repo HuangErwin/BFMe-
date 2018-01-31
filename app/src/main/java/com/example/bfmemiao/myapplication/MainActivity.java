@@ -20,7 +20,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void setupView() {
+        setTheme(android.R.style.Theme_Material_Wallpaper_NoTitleBar);
         setContentView(R.layout.activity_main);
+//        WallpaperManager manager = WallpaperManager.getInstance(this);
+//        Drawable drawable = manager.getDrawable();
+//        ImageView mIvImg = (ImageView) findViewById(R.id.ivimage);
+//        mIvImg.setImageDrawable(drawable);
+
+
         instances = FragmentFactory.getInstances();
         int position = getIntent().getIntExtra("position", 0);
         fragment = instances.createFragment(position);

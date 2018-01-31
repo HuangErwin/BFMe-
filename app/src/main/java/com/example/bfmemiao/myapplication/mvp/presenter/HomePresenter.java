@@ -31,18 +31,21 @@ public class HomePresenter implements OnLoadDataListener {
         homeView.errorHandling(e);
     }
 
-    public void requestHomeDate() {
+
+    public void requestPost(String patch) {
         homeView.showProcress();
-        homeModel.requestHomeDate(this);
+        homeModel.requestPost(patch,this);
     }
 
-    public void requestCategory() {
+    public void requestGet(String path) {
         homeView.showProcress();
-        homeModel.requestCategory(this);
+        homeModel.requestGet(path,this);
     }
 
     public void requestTalk(String pageSize, String pageNo) {
         homeView.showProcress();
         homeModel.requestTalk(pageSize,pageNo,this);
     }
+
+
 }

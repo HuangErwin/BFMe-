@@ -62,7 +62,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
         homeRecycleViewAdapter = new HomeRecycleViewAdapter(mActivity,category);
         mRecycleView.setAdapter(homeRecycleViewAdapter);
         homePresenter = new HomePresenter(this);
-        homePresenter.requestHomeDate();
+        homePresenter.requestPost("1");
     }
 
 

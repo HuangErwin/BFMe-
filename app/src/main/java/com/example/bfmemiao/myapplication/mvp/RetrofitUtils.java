@@ -66,6 +66,7 @@ public abstract class RetrofitUtils {
 
 
 
+
     static class LauncherTrust implements X509TrustManager {
 
         @Override

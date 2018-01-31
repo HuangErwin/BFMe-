@@ -15,54 +15,6 @@ import rx.Observer;
  */
 
 public class HomeModel {
-    public void requestHomeDate(final OnLoadDataListener listener) {
-        HttpRequest.getInstance().requestHomeDate(new Observer<BaseBean>() {
-
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                listener.onFailure(e);
-            }
-
-            @Override
-            public void onNext(BaseBean result) {
-               if(result.getErrCode().equals("0")){
-                   HomeBean homeBean = new Gson().fromJson(result.getData(), HomeBean.class);
-                   listener.onSuccess(homeBean);
-//                   Toast.makeText(BaseApplication.getApplication(), "走到这里了！", Toast.LENGTH_SHORT).show();
-               }
-            }
-        });
-    }
-
-    public void requestCategory(final OnLoadDataListener listener) {
-        HttpRequest.getInstance().requestCategory(new Observer<BaseBean>() {
-
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                listener.onFailure(e);
-            }
-
-            @Override
-            public void onNext(BaseBean result) {
-               if(result.getErrCode().equals("0")){
-                   CategoryAllBean homeBean = new Gson().fromJson(result.getData(), CategoryAllBean.class);
-                   listener.onSuccess(homeBean);
-//                   Toast.makeText(BaseApplication.getApplication(), "走到这里了！", Toast.LENGTH_SHORT).show();
-               }
-            }
-        });
-    }
-
     public void requestTalk(String pageSize, String pageNo,final OnLoadDataListener listener) {
         HttpRequest.getInstance().requestTalk(pageSize,pageNo,new Observer<BaseBean>() {
 
@@ -81,9 +33,61 @@ public class HomeModel {
                if(result.getErrCode().equals("0")){
                    TalkBean homeBean = new Gson().fromJson(result.getData(), TalkBean.class);
                    listener.onSuccess(homeBean);
-//                   Toast.makeText(BaseApplication.getApplication(), "走到这里了！", Toast.LENGTH_SHORT).show();
-//                   LogUtil.LogMC("HomeModel",result.getData());
                }
+            }
+        });
+    }
+
+    public void requestGet(final String path, final OnLoadDataListener listener) {
+        HttpRequest.getInstance().requestGet(path,new Observer<BaseBean>() {
+
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                listener.onFailure(e);
+            }
+
+            @Override
+            public void onNext(BaseBean result) {
+                if(result.getErrCode().equals("0")){
+                    switch (path){
+                        case "1":
+                            CategoryAllBean  categoryAllBean = new Gson().fromJson(result.getData(), CategoryAllBean.class);
+                            listener.onSuccess(categoryAllBean);
+                            break;
+                    }
+                }
+            }
+        });
+    }
+
+    public void requestPost(final String path, final OnLoadDataListener listener) {
+        HttpRequest.getInstance().requestPost(path,new Observer<BaseBean>() {
+
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                listener.onFailure(e);
+            }
+
+            @Override
+            public void onNext(BaseBean result) {
+                if(result.getErrCode().equals("0")){
+                    switch (path){
+                        case "1":
+                            HomeBean homeBean = new Gson().fromJson(result.getData(), HomeBean.class);
+                            listener.onSuccess(homeBean);
+                            break;
+                    }
+                }
             }
         });
     }
